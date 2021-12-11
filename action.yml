@@ -1,0 +1,30 @@
+name: 'Zodash Open Tunnel'
+description: 'open tunnel with github action'
+author: 'Zero <GitHub: whatwewant>'
+branding:
+  icon: 'message-square'
+  color: 'green'
+color:
+inputs:
+  client_id:
+    required: true
+    description: client id
+  client_secret:
+    required: true
+    description: client secret
+  port:
+    required: true
+    description: output port
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: docker
+  image: Dockerfile
+  # entrypoint: 'sh -c'
+  # args:
+  #   - node /app/lib/action.js
+  env:
+    CLIENT_ID: ${{ inputs.client_id }}
+    CLIENT_SECRET: ${{ inputs.client_secret }}
+    PORT: ${{ inputs.port }}
